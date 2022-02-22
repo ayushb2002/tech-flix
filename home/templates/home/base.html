@@ -17,13 +17,13 @@
 
         <nav class="navbar-nav">
             <ul class="navbar-ul">
-                <li class="navbar-li navbar-head"><a href="{% url 'index' %}"><img src="#" alt="techflix-logo"></a></li>
+                <li class="navbar-li navbar-head"><a href="{% url 'index' %}"><img src="{% static 'img/logo.jpeg' %}" alt="techflix-logo" id="techflix-logo"></a></li>
                 <li class="navbar-li navbar-gap"></li>
                 <li class="navbar-li"><a href="{% url 'index' %}">Home</a></li>
                 <li class="navbar-li"><a href="{% url 'aboutUs' %}">About Us</a></li>
                 <li class="navbar-li"><a href="{% url 'prepare' %}">Prepare</a></li>
-                <li class="navbar-li"><a href="#">Login</a></li>
-                <li class="navbar-li"><a href="#">Register</a></li>
+                <li class="navbar-li"><a href="{% url 'login' %}">Login</a></li>
+                <li class="navbar-li"><a href="{% url 'register' %}">Register</a></li>
             </ul>
         </nav>
     
