@@ -13,7 +13,7 @@ const VideoPage = () => {
   const user = useRecoilValue(authAtom);
   useEffect(() => {
     if (!user) {
-      router.push("/login");
+      router.push("/");
     }
     if (!videoKey) {
       router.push("/dashboard");
