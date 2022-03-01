@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,12 +13,14 @@
         {% endblock title %}
     </title>
 </head>
+
 <body>
     <section class="navbar-section">
 
         <nav class="navbar-nav">
             <ul class="navbar-ul">
-                <li class="navbar-li navbar-head"><a href="{% url 'index' %}"><img src="{% static 'img/logo.jpeg' %}" alt="techflix-logo" id="techflix-logo"></a></li>
+                <li class="navbar-li navbar-head"><a href="{% url 'index' %}"><img src="{% static 'img/logo.jpeg' %}"
+                            alt="techflix-logo" id="techflix-logo"></a></li>
                 <li class="navbar-li navbar-gap"></li>
                 <li class="navbar-li"><a href="{% url 'index' %}">Home</a></li>
                 <li class="navbar-li"><a href="{% url 'aboutUs' %}">About Us</a></li>
@@ -26,12 +29,14 @@
                 <li class="navbar-li"><a href="{% url 'register' %}">Register</a></li>
             </ul>
         </nav>
-    
+
     </section>
     {% block body %}
 
     {% endblock body %}
 
-<script src="{% static 'js/main.js' %}"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
+
 </html>
