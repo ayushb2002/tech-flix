@@ -5,11 +5,15 @@ import Button from "./Button";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { authAtom } from "../atoms/authAtom";
+import { getAuth, signOut } from "firebase/auth";
+import app from "../firebase";
 
 const Navbar = () => {
   const [user, setUser] = useRecoilState(authAtom);
   const router = useRouter();
+  const auth = getAuth(app);
   const logOut = () => {
+    signOut(auth);
     setUser(null);
     router.push('/');
   }
