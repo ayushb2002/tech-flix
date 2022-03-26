@@ -32,14 +32,14 @@ const RegisterForm = () => {
     },
   });
   return (
-    <div className="flex flex-col w-72 h-auto">
+    <div className="flex flex-col h-auto w-72">
       <form onSubmit={registerForm.handleSubmit} className="space-y-5">
         <div className="flex flex-col">
           <label className="text-white" htmlFor="email">
             Email Address
           </label>
           <input
-            className="bg-transparent border-white border outline-none text-white rounded-lg"
+            className="text-white bg-transparent border border-white rounded-lg outline-none"
             id="email"
             name="email"
             type="email"
@@ -52,7 +52,7 @@ const RegisterForm = () => {
             Display Name
           </label>
           <input
-            className="bg-transparent border-white border outline-none text-white rounded-lg"
+            className="text-white bg-transparent border border-white rounded-lg outline-none"
             id="displayName"
             name="displayName"
             type="text"
@@ -65,7 +65,7 @@ const RegisterForm = () => {
             Password
           </label>
           <input
-            className="bg-transparent border-white border outline-none text-white rounded-lg"
+            className="text-white bg-transparent border border-white rounded-lg outline-none"
             id="password"
             name="password"
             type="password"
@@ -78,7 +78,7 @@ const RegisterForm = () => {
             Confirm Password
           </label>
           <input
-            className="bg-transparent border-white border outline-none text-white rounded-lg"
+            className="text-white bg-transparent border border-white rounded-lg outline-none"
             id="cpassword"
             name="confirmPassword"
             type="password"
@@ -87,14 +87,14 @@ const RegisterForm = () => {
           />
         </div>
         <button
-          className="bg-green-500 p-2 hover:bg-green-600 rounded-lg text-white w-full transition-all duration-200"
+          className="w-full p-2 text-white transition-all duration-200 bg-red-500 rounded-lg hover:bg-red-600"
           type="submit"
         >
           Register
         </button>
-        <p className="text-white text-sm text-center">OR</p>
+        <p className="text-sm text-center text-white">OR</p>
         <button
-          className="bg-blue-500 p-2 hover:bg-blue-600 rounded-lg text-white w-full transition-all duration-200"
+          className="w-full p-2 text-white transition-all duration-200 bg-blue-500 rounded-lg hover:bg-blue-600"
           type="submit"
         >
           Register with Google

@@ -72,7 +72,7 @@ const AdminLoginForm = () => {
           />
         </div>
         <button
-          className="w-full p-2 text-white transition-all duration-200 bg-green-500 rounded-lg hover:bg-green-600"
+          className="w-full p-2 text-white transition-all duration-200 bg-red-500 rounded-lg hover:bg-green-600"
           type="submit"
         >
           Login

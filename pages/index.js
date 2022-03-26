@@ -64,7 +64,7 @@ export default function Home() {
         <div className="flex items-start justify-center space-x-8">
           <p className="text-gray-200">Our popular courses:</p>
           {subs.map((sub, index) => (
-            <p key={index} className="text-green-500 cursor-pointer">
+            <p key={index} className="text-red-500 cursor-pointer">
               {sub}
             </p>
           ))}

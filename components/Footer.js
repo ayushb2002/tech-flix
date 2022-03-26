@@ -22,32 +22,32 @@ const Footer = () => {
           <IconView Icon={FaLinkedin} link="https://linkedin.com/" />
         </div>
         <div>
-            <p className="text-gray-50 text-sm">&copy; 2022 Techflix</p>
+            <p className="text-sm text-gray-50">&copy; 2022 Techflix</p>
         </div>
       </div>
       <div className="flex flex-col items-start justify-center space-y-6">
-        <span className="text-gray-50 font-semibold">Company</span>
-        <ul className="list-none space-y-4">
-          <li className="text-white cursor-pointer hover:text-green-500">
+        <span className="font-semibold text-gray-50">Company</span>
+        <ul className="space-y-4 list-none">
+          <li className="text-white cursor-pointer hover:text-red-500">
             About Us
           </li>
-          <li className="text-white cursor-pointer hover:text-green-500">
+          <li className="text-white cursor-pointer hover:text-red-500">
             Blogs
           </li>
-          <li className="text-white cursor-pointer hover:text-green-500">
+          <li className="text-white cursor-pointer hover:text-red-500">
             Privacy Policy
           </li>
-          <li className="text-white cursor-pointer hover:text-green-500">
+          <li className="text-white cursor-pointer hover:text-red-500">
             Terms and Conditions
           </li>
         </ul>
       </div>
       <div className="flex flex-col items-start justify-center space-y-6">
-        <span className="text-gray-50 font-semibold">Popular Content</span>
-        <ul className="list-none space-y-4">
+        <span className="font-semibold text-gray-50">Popular Content</span>
+        <ul className="space-y-4 list-none">
           {subs.map((sub, index) => (
             <li
-              className="text-white cursor-pointer hover:text-green-500"
+              className="text-white cursor-pointer hover:text-red-500"
               key={index}
             >
               {sub}
@@ -56,18 +56,18 @@ const Footer = () => {
         </ul>
       </div>
       <div className="flex flex-col items-start justify-center space-y-6">
-        <span className="text-gray-50 font-semibold">Other Links</span>
-        <ul className="list-none space-y-4">
-          <li className="text-white cursor-pointer hover:text-green-500">
+        <span className="font-semibold text-gray-50">Other Links</span>
+        <ul className="space-y-4 list-none">
+          <li className="text-white cursor-pointer hover:text-red-500">
             User Guidelines
           </li>
-          <li className="text-white cursor-pointer hover:text-green-500">
+          <li className="text-white cursor-pointer hover:text-red-500">
             Site Map
           </li>
-          <li className="text-white cursor-pointer hover:text-green-500">
+          <li className="text-white cursor-pointer hover:text-red-500">
             Refund Policy
           </li>
-          <li className="text-white cursor-pointer hover:text-green-500">
+          <li className="text-white cursor-pointer hover:text-red-500">
             Takedown Policy
           </li>
         </ul>

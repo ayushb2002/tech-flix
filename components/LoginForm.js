@@ -18,7 +18,7 @@ const LoginForm = () => {
     onSubmit: (values) => {
       signInWithEmailAndPassword(auth, values.email, values.password)
         .then((userCreds) => {
-          setUser(auth?.currentUser);
+          setUser(userCreds?.user);
           router.push('/');
         })
         .catch((err) => {
@@ -36,7 +36,7 @@ const LoginForm = () => {
             Email Address
           </label>
           <input
-            className="bg-transparent border-white border outline-none text-white rounded-lg"
+            className="text-white bg-transparent border border-white rounded-lg outline-none"
             id="email"
             name="email"
             type="email"
@@ -49,7 +49,7 @@ const LoginForm = () => {
             Password
           </label>
           <input
-            className="bg-transparent border-white border outline-none text-white rounded-lg"
+            className="text-white bg-transparent border border-white rounded-lg outline-none"
             id="password"
             name="password"
             type="password"
@@ -58,14 +58,14 @@ const LoginForm = () => {
           />
         </div>
         <button
-          className="bg-green-500 p-2 hover:bg-green-600 rounded-lg text-white w-full transition-all duration-200"
+          className="w-full p-2 text-white transition-all duration-200 bg-red-500 rounded-lg hover:bg-red-600"
           type="submit"
         >
           Login
         </button>
-        <p className="text-white text-sm text-center">OR</p>
+        <p className="text-sm text-center text-white">OR</p>
         <button
-          className="bg-blue-500 p-2 hover:bg-blue-600 rounded-lg text-white w-full transition-all duration-200"
+          className="w-full p-2 text-white transition-all duration-200 bg-blue-500 rounded-lg hover:bg-blue-600"
           type="submit"
         >
           Sign in with Google

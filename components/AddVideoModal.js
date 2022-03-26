@@ -125,7 +125,7 @@ const AddVideoModal = () => {
               </div>
             <button
               type="submit"
-              className="flex items-center justify-center px-6 py-2 text-white transition-all duration-200 bg-green-500 rounded-lg outline-none hover:bg-green-600"
+              className="flex items-center justify-center px-6 py-2 text-white transition-all duration-200 bg-red-500 rounded-lg outline-none hover:bg-green-600"
             >
               Add video
             </button>
