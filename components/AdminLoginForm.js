@@ -1,45 +1,48 @@
 import React from "react";
 import { useFormik } from "formik";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/router";
-import app, { db } from "../firebase";
+import { db } from "../firebase";
 import { useRecoilState } from "recoil";
 import { adminAtom, authAtom } from "../atoms/authAtom";
-import { collection, getDoc, onSnapshot, query, where, doc } from "firebase/firestore";
+import { collection, getDoc, doc } from "firebase/firestore";
 
 const AdminLoginForm = () => {
-  const auth = getAuth(app);
   const router = useRouter();
-  const [user, setUser] = useRecoilState(authAtom);
-  const [isAdmin, setIsAdmin] = useRecoilState(adminAtom);
+  const [adminUser, setAdminUser] = useRecoilState(adminAtom);
 
-  const checkForAdmin = (uid) => {
-    const adminDoc = doc(collection(db, "admin"), uid);
-    getDoc(adminDoc).then(docSnap => {
-      if (docSnap.data().isAdmin) {
-        setUser(auth?.currentUser);
-        alert('You are an admin');
-        setIsAdmin(true);
-        router.push('/admin')
-      } else {
-        alert("You are not an admin");
-        setIsAdmin(false);
-        router.push('/login');
-      }
-    }).catch((err) => false);
+  const checkForAdmin = async (email, password) => {
+    const adminDoc = doc(collection(db, "admin"), email);
+    const docSnap = await getDoc(adminDoc);
+    if (!docSnap.exists()) return false;
+    const userData = docSnap.data();
+    const resp = await fetch("/api/admin/check", {
+      method: "POST",
+      body: JSON.stringify({ hash: userData?.password, string: password }),
+    });
+    if (resp.status === 200) {
+      setAdminUser({ email, name: userData?.name, image: userData?.image });
+      return true;
+    }
+    return false;
   };
   const adminLoginForm = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
-    onSubmit: (values) => {
-      signInWithEmailAndPassword(auth, values.email, values.password)
-        .then((userCreds) => {
-          const uid = userCreds?.user?.uid;
-          checkForAdmin(uid);
-        })
-        .catch((err) => alert(err?.message));
+    onSubmit: async (values) => {
+      if (values.email === "" || values.password === "") {
+        alert("Enter valid email");
+        return false;
+      }
+
+      const isAdmin = await checkForAdmin(values.email, values.password);
+      if (isAdmin) {
+        alert("Admin auth successful");
+        router.push("/admin");
+      } else {
+        router.push("/login");
+      }
     },
   });
   return (
@@ -75,7 +78,7 @@ const AdminLoginForm = () => {
           className="w-full p-2 text-white transition-all duration-200 bg-red-500 rounded-lg hover:bg-green-600"
           type="submit"
         >
-          Login
+          Login as Administrator
         </button>
       </form>
     </div>

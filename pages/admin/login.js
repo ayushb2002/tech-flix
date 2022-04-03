@@ -1,20 +1,23 @@
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import AdminLoginForm from "../../components/AdminLoginForm";
 import { useRecoilValue } from "recoil";
-import { adminAtom, authAtom } from "../../atoms/authAtom";
-import { useRouter } from "next/router";
+import { adminAtom } from "../../atoms/authAtom";
 
 const AdminLogin = () => {
-  const user = useRecoilValue(authAtom);
   const router = useRouter();
-  const isAdmin = useRecoilValue(adminAtom);
+  const user = useRecoilValue(adminAtom);
+  
   useEffect(() => {
-    if (user && !isAdmin) {
-      return router.push("/admin/login");
+    console.log(user)
+    if (user) {
+      router.push("/admin");
     }
-  }, [user, router, isAdmin]);
+  }, [user, router]);
+
   return (
     <div className="flex items-center justify-center w-screen h-screen">
       <Head>
@@ -27,9 +30,7 @@ const AdminLogin = () => {
           width={161}
           alt="Logo"
         />
-        <p className="text-xl font-semibold tracking-wide text-white">
-          Admin Login
-        </p>
+        <p className="text-xl font-semibold tracking-wide text-white">Login</p>
         <AdminLoginForm />
       </div>
     </div>

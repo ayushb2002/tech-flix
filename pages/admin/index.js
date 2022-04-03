@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Navbar from "../../components/Navbar";
 import { useRecoilState } from "recoil";
-import { authAtom } from "../../atoms/authAtom";
+import { adminAtom, authAtom } from "../../atoms/authAtom";
 import Head from "next/head";
 import Button from "../../components/Button";
 import { modalAtom } from "../../atoms/modalAtom";
@@ -12,7 +12,7 @@ import { db } from "../../firebase";
 
 const AdminHomePage = () => {
   const router = useRouter();
-  const [user, setUser] = useRecoilState(authAtom);
+  const [user, setUser] = useRecoilState(adminAtom);
   const [isModalOpen, setIsModalOpen] = useRecoilState(modalAtom);
   const [userRegistration, setUserRegistration] = useState(0);
   const [videos, setVideos] = useState(0);

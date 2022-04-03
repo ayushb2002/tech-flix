@@ -5,16 +5,14 @@ import Button from "./Button";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { authAtom } from "../atoms/authAtom";
-import { getAuth, signOut } from "firebase/auth";
-import app from "../firebase";
+import { signOut } from "next-auth/react";
 
 const Navbar = () => {
   const [user, setUser] = useRecoilState(authAtom);
   const router = useRouter();
-  const auth = getAuth(app);
   const logOut = () => {
-    signOut(auth);
     setUser(null);
+    signOut({redirect: false, callbackUrl: '/login'});
     router.push('/');
   }
   return (
@@ -41,10 +39,10 @@ const Navbar = () => {
       {user ? (
         <div className="flex items-center justify-center gap-4 px-6 py-2 transition-all duration-200 rounded-full group hover:bg-gray-500 hover:cursor-pointer" onClick={logOut}>
           <span className="text-sm font-semibold text-white group-hover:cursor-pointer">
-            {user?.displayName}
+            {user?.name}
           </span>
           <Image
-            src={user?.photoURL}
+            src={user?.image}
             height={40}
             width={40}
             className="rounded-full group-hover:cursor-pointer"

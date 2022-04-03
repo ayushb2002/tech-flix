@@ -13,15 +13,18 @@ import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { authAtom } from "../atoms/authAtom";
 import { useEffect } from "react";
+import { getSession } from "next-auth/react";
 
-export default function Home() {
-  const auth = getAuth(app);
-  const [user, setUser] = useRecoilState(authAtom);
+export default function Home({ user }) {
+  const [currentUser, setUser] = useRecoilState(authAtom);
   const router = useRouter();
 
   useEffect(() => {
-    setUser(auth?.currentUser);
-  }, [auth?.currentUser, setUser]);
+    if (!user) {
+      setUser(null);
+    }
+    setUser(user);
+  }, [setUser]);
 
   const subs = ["College Sems", "DSA", "DBMS", "SDF", "Web Dev for College"];
   return (
@@ -47,7 +50,12 @@ export default function Home() {
             </p>
           </div>
           <div className="h-10" />
-          <LargeButton text="Start Learning" onClick={() => !user ? router.push('/login') : router.push('/dashboard')} />
+          <LargeButton
+            text="Start Learning"
+            onClick={() =>
+              !currentUser ? router.push("/login") : router.push("/dashboard")
+            }
+          />
         </motion.div>
         <motion.div
           variants={reverseFadeInUp}
@@ -94,4 +102,18 @@ export default function Home() {
       <Footer />
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  if (!session) {
+    return {
+      props: {},
+    };
+  }
+  return {
+    props: {
+      user: session?.user,
+    },
+  };
 }

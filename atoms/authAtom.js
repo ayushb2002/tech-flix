@@ -6,6 +6,6 @@ export const authAtom = atom({
 });
 
 export const adminAtom = atom({
-  default: false,
+  default: null,
   key: "adminState",
 });
