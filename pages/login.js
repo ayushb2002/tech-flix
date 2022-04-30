@@ -19,13 +19,13 @@ const Login = ({ user }) => {
         <title>Techflix | Login</title>
       </Head>
       <div className="flex flex-col items-center justify-center p-10 space-y-4 border border-white rounded-lg">
-        <Image
-          src="https://static.uacdn.net/production/_next/static/images/logo.svg?q=75&w=256"
-          height={24}
-          width={161}
-          alt="Logo"
-        />
-        <p className="text-xl font-semibold tracking-wide text-white">Login or Register</p>
+        <div className="flex flex-row">
+          <span className="text-4xl text-white">Tech</span>
+          <span className="text-4xl text-red-500">Flix</span>
+        </div>
+        <p className="text-xl font-semibold tracking-wide text-white">
+          Login or Register
+        </p>
         <div className="flex flex-col w-64 space-y-4">
           <button
             className="w-full p-2 text-black transition-all duration-200 bg-white rounded-lg hover:bg-gray-100"

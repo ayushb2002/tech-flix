@@ -10,9 +10,9 @@ import { adminAtom } from "../../atoms/authAtom";
 const AdminLogin = () => {
   const router = useRouter();
   const user = useRecoilValue(adminAtom);
-  
+
   useEffect(() => {
-    console.log(user)
+    console.log(user);
     if (user) {
       router.push("/admin");
     }
@@ -24,12 +24,10 @@ const AdminLogin = () => {
         <title>Techflix | Admin Login</title>
       </Head>
       <div className="flex flex-col items-center justify-center p-10 space-y-4 border border-white rounded-lg">
-        <Image
-          src="https://static.uacdn.net/production/_next/static/images/logo.svg?q=75&w=256"
-          height={24}
-          width={161}
-          alt="Logo"
-        />
+        <div className="flex flex-row">
+          <span className="text-4xl text-white">Tech</span>
+          <span className="text-4xl text-red-500">Flix</span>
+        </div>
         <p className="text-xl font-semibold tracking-wide text-white">Login</p>
         <AdminLoginForm />
       </div>

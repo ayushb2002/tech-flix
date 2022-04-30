@@ -8,12 +8,10 @@ const Footer = () => {
   return (
     <div className="flex items-center justify-around py-10">
       <div className="flex flex-col items-start justify-center space-y-8">
-        <Image
-          src="https://static.uacdn.net/production/_next/static/images/logo.svg?q=75&w=256"
-          alt="Logo"
-          height={24}
-          width={161}
-        />
+        <div className="flex flex-row">
+          <span className="text-4xl text-white">Tech</span>
+          <span className="text-4xl text-red-500">Flix</span>
+        </div>
         <div className="flex items-start space-x-4">
           <IconView Icon={FaFacebookF} link="https://facebook.com/" />
           <IconView Icon={FaYoutube} link="https://youtube.com/" />
