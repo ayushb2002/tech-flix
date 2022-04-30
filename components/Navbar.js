@@ -3,17 +3,22 @@ import React from "react";
 import Button from "./Button";
 
 import { useRouter } from "next/router";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { adminAtom, authAtom } from "../atoms/authAtom";
 import { signOut } from "next-auth/react";
 
 const Navbar = () => {
   const [user, setUser] = useRecoilState(authAtom);
-  const adminUser = useRecoilValue(adminAtom);
+  const [adminUser, setAdminUser] = useRecoilState(adminAtom);
   const router = useRouter();
   const logOut = () => {
-    setUser(null);
-    signOut({ redirect: false, callbackUrl: "/login" });
+    if (user) {
+      setUser(null);
+      signOut({ redirect: false, callbackUrl: "/login" });
+    }
+    if (adminUser) {
+      setAdminUser(null);
+    }
     router.push("/");
   };
   return (
