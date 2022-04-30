@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Navbar from "../../components/Navbar";
-import { useRecoilState } from "recoil";
-import { adminAtom, authAtom } from "../../atoms/authAtom";
+import { useRecoilValue } from "recoil";
+import { adminAtom } from "../../atoms/authAtom";
 import Head from "next/head";
 import Button from "../../components/Button";
-import { modalAtom } from "../../atoms/modalAtom";
-import AddVideoModal from "../../components/AddVideoModal";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../../firebase";
+import AddVideoForm from "../../components/AddVideoForm";
+import AddSubjectForm from "../../components/AddSubjectForm";
+import AddAdminUser from "../../components/AddAdminUser";
 
 const AdminHomePage = () => {
   const router = useRouter();
-  const [user, setUser] = useRecoilState(adminAtom);
-  const [isModalOpen, setIsModalOpen] = useRecoilState(modalAtom);
+  const user = useRecoilValue(adminAtom);
   const [userRegistration, setUserRegistration] = useState(0);
   const [videos, setVideos] = useState(0);
   useEffect(() => {
     if (!user) router.push("/admin/login");
   }, [user, router]);
   useEffect(() => {
-    getDocs(query(collection(db, "videos"))).then((snapshot => {
+    getDocs(query(collection(db, "videos"))).then((snapshot) => {
       setVideos(snapshot.docs.length);
-    }))
-  }, [])
+    });
+  }, []);
   return (
     <div className="flex flex-col">
       <Head>
@@ -40,12 +40,12 @@ const AdminHomePage = () => {
           <span className="text-xl text-white">{videos}</span>
         </div>
       </div>
-      <div className="flex items-center justify-center w-full my-4">
-        <Button
-          text="Add new Video"
-          onClick={() => setIsModalOpen(true)}
-        />
-        <AddVideoModal />
+      <div className="flex items-start justify-center w-full px-2 my-4 divide-x">
+        <AddVideoForm />
+        <div className="flex flex-col items-start w-full divide-y">
+          <AddSubjectForm />
+          <AddAdminUser />
+        </div>
       </div>
     </div>
   );

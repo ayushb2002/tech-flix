@@ -25,7 +25,7 @@ const Login = ({ user }) => {
           width={161}
           alt="Logo"
         />
-        <p className="text-xl font-semibold tracking-wide text-white">Login</p>
+        <p className="text-xl font-semibold tracking-wide text-white">Login or Register</p>
         <div className="flex flex-col w-64 space-y-4">
           <button
             className="w-full p-2 text-black transition-all duration-200 bg-white rounded-lg hover:bg-gray-100"

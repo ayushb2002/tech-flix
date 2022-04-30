@@ -39,6 +39,11 @@ const AdminLoginForm = () => {
       const isAdmin = await checkForAdmin(values.email, values.password);
       if (isAdmin) {
         alert("Admin auth successful");
+        setAdminUser({
+          email: values.email,
+          name: "Administrator",
+          image: "https://avatars.dicebear.com/api/initials/Administrator.svg"
+        })
         router.push("/admin");
       } else {
         router.push("/login");

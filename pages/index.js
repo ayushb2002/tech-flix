@@ -24,7 +24,7 @@ export default function Home({ user }) {
       setUser(null);
     }
     setUser(user);
-  }, [setUser]);
+  }, [user, setUser]);
 
   const subs = ["College Sems", "DSA", "DBMS", "SDF", "Web Dev for College"];
   return (

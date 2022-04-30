@@ -9,20 +9,13 @@
 }
 
 @layer components {
-  .Modal {
-    @apply flex text-white bg-black rounded-lg;
-    position: absolute;
-    top: 40px;
-    left: 40px;
-    right: 40px;
-    bottom: 40px;
+  .form-control {
+    @apply flex flex-col w-full h-full p-2 text-white;
   }
-  .Overlay {
-    @apply bg-black opacity-90;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  .form-control-label {
+    @apply pb-2 text-lg text-white;
+  }
+  .form-input {
+    @apply p-2 text-white bg-transparent border border-gray-100 rounded-lg focus:outline-none;
   }
 }

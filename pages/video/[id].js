@@ -27,13 +27,9 @@ const VideoPage = () => {
       query(collection(db, "videos"), where("videoKey", "==", videoKey))
     ).then((snapshot) => {
       setVideo(snapshot?.docs[0].data());
+      console.log(snapshot?.docs[0].data());
     });
   }, [user, router, videoKey]);
-
-  const videoPlayerOpts = {
-    height: "100%",
-    width: "100%",
-  };
 
   return (
     <div className="flex flex-col w-screen h-screen overflow-y-scroll">

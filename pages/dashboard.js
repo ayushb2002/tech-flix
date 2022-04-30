@@ -2,14 +2,12 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
 import Navbar from "../components/Navbar";
-import { useRecoilValue } from "recoil";
-import { authAtom } from "../atoms/authAtom";
 import CourseList from "../components/CourseList";
 import Head from "next/head";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import { getSession } from "next-auth/react";
 
-const Dashboard = () => {
-  const user = useRecoilValue(authAtom);
+const Dashboard = ({user}) => {
   const router = useRouter();
   const [courseList, setCourseList] = useState([]);
   const [subjects, setSubjects] = useState([]);
@@ -17,7 +15,7 @@ const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // if (!user) return router.push("/login");
+    if (!user) return router.push("/login");
     
     async function getData() {
       const subjectSnapshot = await getDocs(collection(db, "subjects"));
@@ -36,7 +34,8 @@ const Dashboard = () => {
       // }
       
     }
-    getData().then(() => setIsLoading(false)).catch(err => alert(err));
+    getData()
+    setIsLoading(false);
   }, [user, router]);
 
   return (
@@ -44,7 +43,7 @@ const Dashboard = () => {
       {!isLoading && (
         <div className="flex flex-col w-full">
           <Head>
-            <title>Techflix - {user?.displayName} | Dashboard</title>
+            <title>Techflix - {user?.name} | Dashboard</title>
           </Head>
           <Navbar />
           <div className="mx-24">
@@ -62,5 +61,19 @@ const Dashboard = () => {
     </>
   );
 };
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  if (!session) {
+    return {
+      props: {},
+    };
+  }
+  return {
+    props: {
+      user: session?.user,
+    },
+  };
+}
 
 export default Dashboard;
