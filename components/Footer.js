@@ -13,11 +13,11 @@ const Footer = () => {
           <span className="text-4xl text-red-500">Flix</span>
         </div>
         <div className="flex items-start space-x-4">
-          <IconView Icon={FaFacebookF} link="https://facebook.com/" />
-          <IconView Icon={FaYoutube} link="https://youtube.com/" />
-          <IconView Icon={FaTwitter} link="https://twitter.com/" />
-          <IconView Icon={FaInstagram} link="https://instagram.com/" />
-          <IconView Icon={FaLinkedin} link="https://linkedin.com/" />
+          <IconView Icon={FaFacebookF} link="https://facebook.com/" /> {/* INOP */}
+          <IconView Icon={FaYoutube} link="https://www.youtube.com/channel/UCSEIa4fboxO7IMtHEo8jePg" />
+          <IconView Icon={FaTwitter} link="https://twitter.com/" /> {/* INOP */}
+          <IconView Icon={FaInstagram} link="https://www.instagram.com/tech_flix_community/" />
+          <IconView Icon={FaLinkedin} link="https://www.linkedin.com/company/tech-flix/" />
         </div>
         <div>
             <p className="text-sm text-gray-50">&copy; 2022 Techflix</p>
