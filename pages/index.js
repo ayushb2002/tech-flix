@@ -7,8 +7,6 @@ import Navbar from "../components/Navbar";
 import Head from "next/head";
 
 import { fadeInUp, reverseFadeInUp } from "../animations/fadeInUp";
-import { getAuth } from "@firebase/auth";
-import app from "../firebase";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { authAtom } from "../atoms/authAtom";
@@ -68,17 +66,7 @@ export default function Home({ user }) {
           </div>
         </motion.div>
       </div>
-      <div className="flex items-start justify-around">
-        <div className="flex items-start justify-center space-x-8">
-          <p className="text-gray-200">Our popular courses:</p>
-          {subs.map((sub, index) => (
-            <p key={index} className="text-red-500 cursor-pointer">
-              {sub}
-            </p>
-          ))}
-        </div>
-        <div></div>
-      </div>
+      
       <div className="flex items-center justify-around">
         <div className="grid grid-cols-1 space-x-10 md:grid-cols-2 lg:grid-cols-3">
           <HeroCard

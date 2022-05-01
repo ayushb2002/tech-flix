@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { adminAtom, authAtom } from "../atoms/authAtom";
 import { signOut } from "next-auth/react";
+import Link from "next/link";
 
 const Navbar = () => {
   const [user, setUser] = useRecoilState(authAtom);
@@ -34,6 +35,37 @@ const Navbar = () => {
         </div>
       </div>
 
+      {!user && !adminUser && (
+        <div className="flex flex-row items-center justify-center space-x-4">
+          <Link href="/" passHref>
+            <div className="text-lg text-white cursor-pointer hover:text-red-500">
+              Home
+            </div>
+          </Link>
+          <Link href="/aboutus" passHref>
+            <div className="text-lg text-white cursor-pointer hover:text-red-500">
+              About Us
+            </div>
+          </Link>
+          <Link href="/" passHref>
+            <div className="text-lg text-white cursor-pointer hover:text-red-500">
+              Contact Us
+            </div>
+          </Link>
+        </div>
+      )}
+
+      {(user || adminUser) && (
+        <div>
+          <form>
+            <input
+              className="w-full form-input"
+              type="search"
+              placeholder="Search for Videos"
+            />
+          </form>
+        </div>
+      )}
       {user || adminUser ? (
         <div
           className="flex items-center justify-center gap-4 px-6 py-2 transition-all duration-200 rounded-full group hover:bg-gray-500 hover:cursor-pointer"
