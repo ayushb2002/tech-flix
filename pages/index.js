@@ -40,12 +40,14 @@ export default function Home({ user }) {
           transition={{ duration: 3000 }}
           className="flex flex-col items-start justify-center"
         >
-          <div className="flex items-center justify-evenly">
-            <p className="flex flex-col text-5xl font-bold tracking-wide text-white">
+          <div className="flex flex-row items-center justify-evenly">
+            <div>
+            <p className="text-5xl font-bold tracking-wide text-white">
               <span>India&apos;s largest</span>
               <div className="h-4" />
               <span>learning platform</span>
             </p>
+            </div>
           </div>
           <div className="h-10" />
           <LargeButton
@@ -54,7 +56,9 @@ export default function Home({ user }) {
               !currentUser ? router.push("/login") : router.push("/dashboard")
             }
           />
+          
         </motion.div>
+        
         <motion.div
           variants={reverseFadeInUp}
           transition={{ duration: 3000 }}
